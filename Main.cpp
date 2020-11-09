@@ -13,6 +13,32 @@ using namespace std;
 const int bMax = 25;
 const int sMin = 16;
 
+//code 1
+int oddSum(int n) {
+	if (n == 1) {
+		return 1;
+	}
+	else {
+		//sum of n numbers
+		//return n + oddSum(n - 1);
+		if (n % 2 == 1) {
+			return n + oddSum(n - 1);
+		}
+		else {
+			return oddSum(n - 1);
+		}
+	}
+}
+
+//code 2
+int recBillets(int max) {
+
+
+
+	return 0;
+}
+
+
 //code 3
 int iterBillets(int max) {
 
@@ -66,10 +92,22 @@ int main() {
 		switch (inp)
 		{
 		case 'a': {
+			int in;
+
+			cout << "Combien de nombre pour la somme" << endl;
+			cin >> in;
+
+			cout << oddSum(in) << endl;
 
 			break;
 		}
 		case 'b': {
+			int in;
+
+			cout << "Quel est le nombre" << endl;
+			cin >> in;
+
+			cout << recBillets(in);
 
 			break;
 		}
