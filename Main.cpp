@@ -31,13 +31,45 @@ int oddSum(int n) {
 }
 
 //code 2
-int recBillets(int max) {
+int itRec = 0;
 
+int recBillets(const int max, int cmp) {
+	
+	int mb25 = 0, mb16 = 0, mb1 = 0;
 
+	//1st call
+	if (cmp == 0) {
+		int res = max % bMax;
+		if (res > sMin) {
+			mb1 = res %sMin;
+			mb16 = floor(res / sMin);
+		}
+		else {
+			mb1 = res;
+		}
 
-	return 0;
+		mb25 = floor(max / bMax);
+		itRec = mb25 - 1;
+		cmp = mb25 + mb16 + mb1;
+
+		return recBillets(max, cmp);
+	}
+
+	if (itRec == 0) {
+		return cmp;
+	}
+	else {
+		int reste = max - (itRec*bMax);
+		mb1 = reste % sMin;
+		mb16 = floor(reste / sMin);
+		int cmp2 = itRec + mb1 + mb16;
+		if (cmp2 < cmp) {
+			cmp = cmp2;
+		}
+		itRec--;
+		return recBillets(max, cmp);
+	}	
 }
-
 
 //code 3
 int iterBillets(int max) {
@@ -107,7 +139,7 @@ int main() {
 			cout << "Quel est le nombre" << endl;
 			cin >> in;
 
-			cout << recBillets(in);
+			cout << recBillets(in, 0) << endl;
 
 			break;
 		}
