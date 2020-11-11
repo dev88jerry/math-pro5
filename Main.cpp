@@ -104,6 +104,20 @@ int iterBillets(int max) {
 	return cmp;
 }
 
+//code 4
+double regress(double x) {
+	return -2.5871740461643640e+000 * pow(x, 0)
+		+ 8.6042714823477581e+002 * pow(x, 1)
+		+ -2.2824637597271503e+003 * pow(x, 2)
+		+ 2.4002782690356726e+003 * pow(x, 3)
+		+ -1.3311640388068954e+003 * pow(x, 4)
+		+ 4.3221987458079934e+002 * pow(x, 5)
+		+ -8.5097881486796553e+001 * pow(x, 6)
+		+ 1.0020573969648803e+001 * pow(x, 7)
+		+ -6.5108498698443973e-001 * pow(x, 8)
+		+ 1.8084251841408546e-002 * pow(x, 9);
+}
+
 int main() {
 
 	char inp;
@@ -154,7 +168,11 @@ int main() {
 			break;
 		}
 		case 'd': {
+			double in;
+			cout << "Input please " << endl;
+			cin >> in;
 
+			cout << round(regress(in)) << endl;
 
 			break;
 		}
