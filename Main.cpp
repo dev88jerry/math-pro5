@@ -105,17 +105,45 @@ int iterBillets(int max) {
 }
 
 //code 4
-double regress(double x) {
-	return -2.5871740461643640e+000 * pow(x, 0)
-		+ 8.6042714823477581e+002 * pow(x, 1)
-		+ -2.2824637597271503e+003 * pow(x, 2)
-		+ 2.4002782690356726e+003 * pow(x, 3)
-		+ -1.3311640388068954e+003 * pow(x, 4)
-		+ 4.3221987458079934e+002 * pow(x, 5)
-		+ -8.5097881486796553e+001 * pow(x, 6)
-		+ 1.0020573969648803e+001 * pow(x, 7)
-		+ -6.5108498698443973e-001 * pow(x, 8)
-		+ 1.8084251841408546e-002 * pow(x, 9);
+double nRetN(double n) {
+	return (2.0 / 3.0) * pow(4, n);
+}
+
+
+int printAP(int n) {
+	if (n <= 1) {		
+		return n + 1;
+	}	
+	return 2 * printAP(n - 1) + 8 * printAP(n - 2);
+}
+
+int pAP(int n) {
+	if (n <= 1) {
+		return n + 1;
+	}
+	int ret = 0;
+	for (int i = 1; i <= 2; i++) {
+		ret += pAP(n - 1);
+	}
+	for (int j = 1; j <= 8; j++) {
+		ret += pAP(n - 2);
+	}
+	return ret;
+}
+int c = 0;
+int ppp(int n) {
+	if (n == 0) {
+		c++;
+		return 1;
+	}
+	else if (n == 1) {
+		c++;
+		return 2;
+	}
+	for (int i = 2; i <= n; i++) {
+		c++;
+		return 2 * ppp(n - 1) + 8 * ppp(n - 2);
+	}
 }
 
 int main() {
@@ -172,8 +200,20 @@ int main() {
 			cout << "Input please " << endl;
 			cin >> in;
 
-			cout << round(regress(in)) << endl;
+			cout << round(nRetN(in)) << endl;
 
+			break;
+		}
+		case 'e': {
+			int in;
+			cout << "rec num please" << endl;
+			cin >> in;
+
+			
+			cout << "1. " << printAP(in) << endl;
+			cout << "2. " << pAP(in) << endl;
+			cout << "3. " << ppp(in) << endl;
+			cout << "Count 3 = " << c << endl;
 			break;
 		}
 		default:
